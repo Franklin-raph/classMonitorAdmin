@@ -12,7 +12,7 @@ const Tasks = () => {
 
   const handleTaskPost = async (e) => {
     e.preventDefault();
-        const resp = await fetch('http://localhost:5000/assessment/task',{
+        const resp = await fetch('https://classroommonitorbackend.herokuapp.com/assessment/task',{
             method:"POST",
             body: JSON.stringify(studentTasks),
             headers: {
