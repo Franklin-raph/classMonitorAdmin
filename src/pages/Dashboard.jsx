@@ -29,7 +29,7 @@ useEffect(() => {
 
   const fetchStudentsData = async () => {
     try {
-      const res = await axios.get('https://classroommonitorbackend.herokuapp.com/student')
+      const res = await axios.get('https://classmonitorapp.herokuapp.com/student')
       const data = await res.data
       setStudents(data)
       console.log(data)
@@ -40,7 +40,7 @@ useEffect(() => {
 
 const fetchStudentsSolution = async () => {
     try {
-      const res = await axios.get('https://classroommonitorbackend.herokuapp.com/student/studentSolution')
+      const res = await axios.get('https://classmonitorapp.herokuapp.com/student/studentSolution')
       const data = await res.data
       setStudentSolution(data)
       console.log(data)
@@ -51,7 +51,7 @@ const fetchStudentsSolution = async () => {
 
 const fetchStudentTasks = async () => {
   try {
-    const resp = await fetch('https://classroommonitorbackend.herokuapp.com/assessment/getAssessment')
+    const resp = await fetch('https://classmonitorapp.herokuapp.com/assessment/getAssessment')
     const allAssessment = await resp.json()
     
     setStudentTasks(allAssessment)

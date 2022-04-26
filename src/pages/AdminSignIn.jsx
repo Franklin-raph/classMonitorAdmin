@@ -1,19 +1,22 @@
 import React,{ useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 
 const AdminSignIn = () => {
     
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const adminSignInDetails = { email, password };
 
     const handleAdminLogin = async (e) => {
         e.preventDefault();
-        const resp = await fetch('https://classroommonitorbackend.herokuapp.com/auth/admin/login',{
+        setLoading(true)
+        const resp = await fetch('https://classmonitorapp.herokuapp.com/auth/admin/login',{
             method:"POST",
             body: JSON.stringify(adminSignInDetails),
             headers: {
@@ -21,6 +24,11 @@ const AdminSignIn = () => {
             }
         })
         const data = await resp.json()
+        if(!data){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
         localStorage.setItem('admin', JSON.stringify(data.signedInAdmin))
         if(data.msg === "Invalid login credentials"){
             setError("Invalid login credentials")
@@ -49,7 +57,19 @@ const AdminSignIn = () => {
             <label className="mt-3">Password</label>
             <input type="password" placeholder="****" onChange={(e) => setPassword(e.target.value)} className="form-control" name="password" required />
 
-            <input type="submit" className="form-control btn-dark mt-3"  value="Login" />
+            {/* <input type="submit" className="form-control btn-dark mt-3"  value="Login" /> */}
+
+            <button type="submit" className="form-control btn-dark mt-3" disabled={loading}>
+                {loading && (
+                        <span 
+                        className='spinner-border spinner-border-sm'
+                        role='status'
+                        aria-hidden='true'
+                            />
+                    )}
+                    Login
+            </button>
+
         </div>
     </form>
     </div>

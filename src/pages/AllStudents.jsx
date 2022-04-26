@@ -20,7 +20,7 @@ const AllStudents = () => {
 
 const fetchStudentsData = async () => {
     try {
-      const res = await axios.get('https://classroommonitorbackend.herokuapp.com/student')
+      const res = await axios.get('https://classmonitorapp.herokuapp.com/student')
       const data = await res.data
       setStudents(data)
       console.log(data)

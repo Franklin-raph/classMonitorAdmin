@@ -119,7 +119,7 @@ const StudentDetails = () => {
 
   const getStudentDetails = async () => {
       try{
-        const resp = await fetch(`https://classroommonitorbackend.herokuapp.com/student/${id}`)
+        const resp = await fetch(`https://classmonitorapp.herokuapp.com/student/${id}`)
         const data = await resp.json()
         setStudentDetails(data)
         console.log(data)
@@ -132,7 +132,7 @@ const StudentDetails = () => {
   const handleStudentDelete = async (e) => {
     e.preventDefault()
       try{
-        const resp = await fetch(`https://classroommonitorbackend.herokuapp.com/student/${id}`)
+        const resp = await fetch(`https://classmonitorapp.herokuapp.com/student/${id}`)
         const data = await resp.json()
         setStudentDetails(data)
         console.log(data)
