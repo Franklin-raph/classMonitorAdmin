@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import  Paper  from '@mui/material/Paper'
 import Avatar from '@mui/material/Avatar';
 import  Container  from '@mui/material/Container'
@@ -101,6 +101,8 @@ const imageContainer = {
 
 const StudentDetails = () => {
 
+  const navigate = useNavigate();
+
     // const classes = useStyles();
     const { id } = useParams()
     const [studentDetails, setStudentDetails] = useState([]);
@@ -129,12 +131,17 @@ const StudentDetails = () => {
     }
   }
 
+  // https://classmonitorapp.herokuapp.com/auth/student/deleteStuentRecord
+
   const handleStudentDelete = async (e) => {
     e.preventDefault()
       try{
-        const resp = await fetch(`https://classmonitorapp.herokuapp.com/student/${id}`)
+        const resp = await fetch(`http://localhost:5000/auth/student/deleteStuentRecord/${id}`,{
+          method: "DELETE"
+        })
         const data = await resp.json()
-        setStudentDetails(data)
+        if(data) navigate(`/dashboard`)
+        else console.log(data)
         console.log(data)
         // setEmailInitials(data.email.charAt(0))
     } catch (error){

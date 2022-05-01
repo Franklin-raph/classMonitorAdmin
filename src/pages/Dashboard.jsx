@@ -58,7 +58,7 @@ const fetchStudentTasks = async () => {
     
   } catch (error) {
     console.log(error)
-  } 
+  }
 }
 
 // const fetchStud
