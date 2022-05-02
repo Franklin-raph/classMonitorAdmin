@@ -107,6 +107,7 @@ const StudentDetails = () => {
     const { id } = useParams()
     const [studentDetails, setStudentDetails] = useState([]);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     
     const handleOpen = () => {
       setOpen(true);
@@ -136,11 +137,15 @@ const StudentDetails = () => {
   const handleStudentDelete = async (e) => {
     e.preventDefault()
       try{
-        const resp = await fetch(`http://localhost:5000/auth/student/deleteStuentRecord/${id}`,{
+        setLoading(true)
+        const resp = await fetch(`https://classmonitorapp.herokuapp.com/auth/student/deleteStuentRecord/${id}`,{
           method: "DELETE"
         })
         const data = await resp.json()
-        if(data) navigate(`/dashboard`)
+        if(data) {
+          setLoading(false)
+          navigate(`/dashboard`)
+        }
         else console.log(data)
         console.log(data)
         // setEmailInitials(data.email.charAt(0))
@@ -201,6 +206,7 @@ const StudentDetails = () => {
                 color="error"
                 onClick={() => handleStudentDelete }
                 style={{ marginRight:'1rem' }}
+                disabled={loading}
                 >
                   Yes i'm sure
               </Button>
