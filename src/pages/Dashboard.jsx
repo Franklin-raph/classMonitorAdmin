@@ -51,7 +51,7 @@ const fetchStudentsSolution = async () => {
 
 const fetchStudentTasks = async () => {
   try {
-    const resp = await fetch('https://classmonitorapp.herokuapp.com/assessment/getAssessment')
+    const resp = await fetch('https://classmonitorapp.herokuapp.com/assessment/getAllAssessment')
     const allAssessment = await resp.json()
     
     setStudentTasks(allAssessment)
@@ -87,12 +87,14 @@ const fetchStudentTasks = async () => {
         </div>
 
         <div className="col-lg-3 col-md-6 col-sm-12">
-          <div className="dashboardCard m-3">
-            <div className="iconAndTitle">
-              <TaskIcon sx={{fontSize:'4rem', marginRight:'10px', textAlign:'center'}}/> <h4>Total Tasks Given</h4>
-            </div>
-            <h4 className='dashboardCardNum'>{stdentTasks.length}</h4>
-          </div>
+          <Link to={`/alltasks`} style={{color:'white'}}>
+              <div className="dashboardCard m-3">
+                <div className="iconAndTitle">
+                  <TaskIcon sx={{fontSize:'4rem', marginRight:'10px', textAlign:'center'}}/> <h4>Total Tasks Given</h4>
+                </div>
+                <h4 className='dashboardCardNum'>{stdentTasks.length}</h4>
+              </div>
+          </Link>
         </div>
 
         <div className="col-lg-3 col-md-6 col-sm-12">
@@ -129,7 +131,7 @@ const fetchStudentTasks = async () => {
         }).map((student) => {
           return(
             <>
-              <Col sm="12" md="6" lg="4" className='my-3' key={student.studentID} >
+              <Col sm="12" md="6" lg="4" className='my-3' key={student._id} >
                   <Link to={`/student/${student.studentID}`}>
                     <div id="studentCard">
                             <Box > 
@@ -161,7 +163,7 @@ const fetchStudentTasks = async () => {
         }).map((solutions) => {
           return(
             <>
-              <Col sm="12" md="6" lg="4" className='my-3' key={solutions.studentID} >
+              <Col sm="12" md="6" lg="4" className='my-3' key={solutions._id} >
                   
                     <div id="studentCard">
                       <Box>

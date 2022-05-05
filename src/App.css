@@ -47,6 +47,10 @@ a{
   font-size: 3rem;
 }
 
+.taskDetails{
+  white-space: pre-line;
+}
+
 
 @media (max-width: 1024px) {
   .card{
