@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const TaskUpdate = () => {
 
@@ -7,9 +7,11 @@ const TaskUpdate = () => {
   const [task, setTask] = useState("");
   const [details, setDetails] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
+  const [taskID, setTaskID] = useState("")
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  // const { task_id } = useParams();
 
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const TaskUpdate = () => {
     setTask(taskDetails.task);
     setDetails(taskDetails.details);
     setSubmissionDate(taskDetails.submissionDate);
+    setTaskID(taskDetails._id)
   },[])
   
   const studentTasksUpdate = { task, reference, details, submissionDate }
@@ -28,7 +31,7 @@ const TaskUpdate = () => {
   const handleTaskUpdate = async (e) => {
     e.preventDefault();
     setLoading(true)
-        const resp = await fetch('https://classmonitorapp.herokuapp.com/assessment/task',{
+        const resp = await fetch(`https://classmonitorapp.herokuapp.com/assessment/taskUpdate/${taskID}`,{
             method:"PATCH",
             body: JSON.stringify(studentTasksUpdate),
             headers: {

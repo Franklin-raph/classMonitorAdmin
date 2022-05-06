@@ -61,7 +61,7 @@ console.log(students)
                       <Link to={`/student/${student.studentID}`}>
                         <div id="studentCard">
                                 <Box > 
-                                  <h5>Name : {student.name}</h5>
+                                  <h5>Name : {student.firstName}</h5>
                                   <h5>Email : {student.email}</h5>
                                 </Box>
                         </div>

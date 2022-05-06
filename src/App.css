@@ -9,6 +9,10 @@ a{
   color: #212529;
 }
 
+#updateBtn{
+  color: #fff;
+}
+
 .card{
   width: 40%;
   margin: 0 auto;

@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Alltasks from './pages/Alltasks';
 import TaskDetails from './pages/TaskDetails'
 import TaskUpdate from './pages/TaskUpdate';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -18,13 +19,13 @@ function App() {
           <div className="container">
           <Routes>
               <Route path='/' element={ <AdminSignIn /> } />
-              <Route path='/allstuents' element={ <AllStudents/> } />
               <Route path='/student/:id' element={ <StudentDetails /> } />
               <Route path='/tasks' element={ <Tasks /> } />
               <Route path='/taskdetails/:taskID' element={ <TaskDetails /> } />
               <Route path='/taskupdate' element={ <TaskUpdate /> } />
               <Route path='/dashboard' element={ <Dashboard /> } />
               <Route path='/alltasks' element={ <Alltasks />} />
+              <Route path='*' element={ <PageNotFound/> } />
             </Routes>
           </div>
         </Router>

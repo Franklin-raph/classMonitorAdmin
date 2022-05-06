@@ -165,7 +165,7 @@ const StudentDetails = () => {
         <Paper elevation={3} sx={paperStyle}>
           
           <div>
-            <p style={{padding: '10px 0'}}> <span style={{fontWeight:'bolder'}}>Student Name : </span>{studentDetails.name}</p>
+            <p style={{padding: '10px 0'}}> <span style={{fontWeight:'bolder'}}>Student Name : </span>{studentDetails.firstName}</p>
             <p style={{padding: '10px 0'}}> <span style={{fontWeight:'bolder'}}>Student Email : </span>{studentDetails.email}</p>
           </div>
           

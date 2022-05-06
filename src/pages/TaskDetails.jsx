@@ -45,8 +45,8 @@ const TaskDetails = () => {
                     Update Task
             </button>
       </form> */}
-      <p style={{ textAlign: 'center', marginTop: '7px' }}>
-        <Link to={`/taskupdate`}>Update Task</Link>
+      <p style={{ textAlign: 'center', marginTop: '7px', backgroundColor:'#1976d2', width:'20%', marginRight:'auto', marginLeft:'auto', padding:'.5rem', color:'white', borderRadius:'8px'}}>
+        <Link to={`/taskupdate`} id="updateBtn">Update Task</Link>
       </p>
     </Container>
   )

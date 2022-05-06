@@ -135,7 +135,7 @@ const fetchStudentTasks = async () => {
                   <Link to={`/student/${student.studentID}`}>
                     <div id="studentCard">
                             <Box > 
-                              <h6>Name : {student.name}</h6>
+                              <h6>Name : {student.firstName}</h6>
                               <h6>Email : {student.email}</h6>
                               <h6>StudentID : {student.studentID}</h6>
                             </Box>
