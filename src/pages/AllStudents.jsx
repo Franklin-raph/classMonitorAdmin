@@ -7,12 +7,16 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AllStudents = () => {
 
   const [students, setStudents] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+
+  const navigate = useNavigate();
+
+  if(!localStorage.getItem('admin')) navigate(`/`)
 
   useEffect(() => {
     fetchStudentsData() 

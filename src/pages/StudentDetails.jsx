@@ -103,6 +103,8 @@ const StudentDetails = () => {
 
   const navigate = useNavigate();
 
+  if(!localStorage.getItem('admin')) navigate(`/`)
+
     // const classes = useStyles();
     const { id } = useParams()
     const [studentDetails, setStudentDetails] = useState([]);

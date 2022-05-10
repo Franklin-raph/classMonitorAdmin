@@ -13,6 +13,8 @@ const TaskUpdate = () => {
   const navigate = useNavigate();
   // const { task_id } = useParams();
 
+  if(!localStorage.getItem('admin')) navigate(`/`)
+
 
   useEffect(() => {
     

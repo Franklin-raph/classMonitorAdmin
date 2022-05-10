@@ -11,6 +11,8 @@ const Tasks = () => {
 
   const navigate = useNavigate();
 
+  if(!localStorage.getItem('admin')) navigate(`/`)
+
   const studentTasks = { task, reference, details, submissionDate }
 
   const handleTaskPost = async (e) => {

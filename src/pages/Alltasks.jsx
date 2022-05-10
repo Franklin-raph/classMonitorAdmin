@@ -16,6 +16,10 @@ const Alltasks = () => {
     const [allStudentTasks, setAllStudentTasks] = useState([]);
     const [searchInput, setSearchInput] = useState('');
 
+    const navigate = useNavigate();
+
+    if(!localStorage.getItem('admin')) navigate(`/`)
+
     useEffect(  () => {
         fetchAllTasks()
       },[]);

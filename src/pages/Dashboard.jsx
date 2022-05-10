@@ -11,7 +11,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Dashboard = () => {
 
@@ -19,6 +19,10 @@ const [students, setStudents] = useState([]);
 const [stdentTasks, setStudentTasks] = useState([]);
 const [studentSolution, setStudentSolution] = useState([])
 const [searchInput, setSearchInput] = useState('');
+
+const navigate = useNavigate();
+
+if(!localStorage.getItem('admin')) navigate(`/`)
 
 useEffect(() => {
   fetchStudentsData()
@@ -60,6 +64,8 @@ const fetchStudentTasks = async () => {
     console.log(error)
   }
 }
+
+
 
 // const fetchStud
 

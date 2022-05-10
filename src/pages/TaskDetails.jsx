@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import Container from '@mui/material/Container'
 
 const TaskDetails = () => {
@@ -8,6 +8,10 @@ const TaskDetails = () => {
     
     const [taskDetails, setTaskDetails] = useState({})
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate();
+
+    if(!localStorage.getItem('admin')) navigate(`/`)
 
     const fetchTaskDetails = async () => {
         const task = await fetch(`https://classmonitorapp.herokuapp.com/assessment/getAnAssessment/${taskID}`)
@@ -45,9 +49,11 @@ const TaskDetails = () => {
                     Update Task
             </button>
       </form> */}
-      <p style={{ textAlign: 'center', marginTop: '7px', backgroundColor:'#1976d2', width:'20%', marginRight:'auto', marginLeft:'auto', padding:'.5rem', color:'white', borderRadius:'8px'}}>
-        <Link to={`/taskupdate`} id="updateBtn">Update Task</Link>
-      </p>
+      <Link to={`/taskupdate`} id="updateBtn">
+        <p style={{ textAlign: 'center', marginTop: '7px', backgroundColor:'#1976d2', width:'50%', marginRight:'auto', marginLeft:'auto', padding:'.5rem', color:'white', borderRadius:'8px'}}>
+          Update Task
+        </p>
+      </Link>
     </Container>
   )
 }
