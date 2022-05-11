@@ -7,6 +7,7 @@ const TaskUpdate = () => {
   const [task, setTask] = useState("");
   const [details, setDetails] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
+  const [submissionCountdown, setsubmissionCountdown] = useState("");
   const [taskID, setTaskID] = useState("")
   const [loading, setLoading] = useState(false);
 
@@ -25,10 +26,16 @@ const TaskUpdate = () => {
     setTask(taskDetails.task);
     setDetails(taskDetails.details);
     setSubmissionDate(taskDetails.submissionDate);
+    setsubmissionCountdown(taskDetails.submissionCountdown);
     setTaskID(taskDetails._id)
   },[])
   
-  const studentTasksUpdate = { task, reference, details, submissionDate }
+  const studentTasksUpdate = { task, reference, details, submissionDate, submissionCountdown }
+
+  const showTask = (e) => {
+    e.preventDefault()
+    console.log(studentTasksUpdate)
+  }
 
   const handleTaskUpdate = async (e) => {
     e.preventDefault();
@@ -66,6 +73,9 @@ const TaskUpdate = () => {
             <label className="mt-3">Due Date</label>
             <input type="date" placeholder="Sun. 03 January 2022"onChange={(e) => setSubmissionDate(e.target.value)} className="form-control" value={submissionDate} required />
 
+            <label className="mt-3">Due Time</label>
+            <input type="datetime-local" onChange={(e) => setsubmissionCountdown(e.target.value)} className="form-control" required />
+
             <button type="submit" className="form-control btn-dark mt-3" disabled={loading}>
                 {loading && (
                         <span 
@@ -78,6 +88,11 @@ const TaskUpdate = () => {
             </button>
         </div>
       </form>
+
+      {/* <button onClick={showTask}>
+        showTask
+      </button> */}
+
     </div>
   )
 }

@@ -21,10 +21,6 @@ const TaskDetails = () => {
         localStorage.setItem('taskDetails', JSON.stringify(data))
     }
 
-    const updateTask = async () => {
-        console.log("Hello")
-    }
-
     useEffect(() => {
         fetchTaskDetails();
     },[])
@@ -36,19 +32,7 @@ const TaskDetails = () => {
       <p><span style={{fontWeight:'bold'}}>Task Details </span>: <span className='taskDetails'> {taskDetails.details} </span></p>
       <p><span style={{fontWeight:'bold'}}>Task Reference </span>:  {taskDetails.reference} </p>
       <p><span style={{fontWeight:'bold'}}>Task Deadline </span>:  {taskDetails.submissionDate} </p>
-
-      {/* <form onSubmit={ updateTask }>
-            <button type="submit" className="form-control btn-dark mt-3" disabled={loading}>
-                {loading && (
-                        <span 
-                        className='spinner-border spinner-border-sm'
-                        role='status'
-                        aria-hidden='true'
-                        />
-                    )}
-                    Update Task
-            </button>
-      </form> */}
+      <p><span style={{fontWeight:'bold'}}>Task Deadline </span>:  {taskDetails.submissionTime} </p>
       <Link to={`/taskupdate`} id="updateBtn">
         <p style={{ textAlign: 'center', marginTop: '7px', backgroundColor:'#1976d2', width:'50%', marginRight:'auto', marginLeft:'auto', padding:'.5rem', color:'white', borderRadius:'8px'}}>
           Update Task

@@ -7,13 +7,14 @@ const Tasks = () => {
   const [task, setTask] = useState("");
   const [details, setDetails] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
+  const [submissionCountdown, setsubmissionCountdown] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   if(!localStorage.getItem('admin')) navigate(`/`)
 
-  const studentTasks = { task, reference, details, submissionDate }
+  const studentTasks = { task, reference, details, submissionDate, submissionCountdown }
 
   const handleTaskPost = async (e) => {
     e.preventDefault();
@@ -50,6 +51,9 @@ const Tasks = () => {
 
             <label className="mt-3">Due Date</label>
             <input type="date" placeholder="Sun. 03 January 2022"onChange={(e) => setSubmissionDate(e.target.value)} className="form-control" required />
+
+            <label className="mt-3">Due Time</label>
+            <input type="time" placeholder="12:00:00 AM"onChange={(e) => setsubmissionCountdown(e.target.value)} className="form-control" required />
 
             <button type="submit" className="form-control btn-dark mt-3" disabled={loading}>
                 {loading && (
